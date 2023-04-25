@@ -20,10 +20,14 @@ const App = () => {
 
   const handleAddNote = (text) => {
     const date = new Date();
+    const day = date.toLocaleString("default", { day: "2-digit" });
+    const month = date.toLocaleString("default", { month: "2-digit" });
+    const year = date.toLocaleString("default", { year: "numeric" });
+    const dateFormat = day + "/" + month + "/" + year;
     const newNote = {
       id: nanoid(),
       text: text,
-      date: date.toLocaleDateString(),
+      date: dateFormat,
     };
     setNotes([...notes, newNote]);
   };
